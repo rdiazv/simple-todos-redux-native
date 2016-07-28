@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import './Todo.sass';
+import styles from './TodoStyle';
+import { View, Text } from 'react-native';
 
 export default class Todo extends Component {
   static propTypes = {
@@ -8,9 +9,9 @@ export default class Todo extends Component {
 
   render() {
     return (
-      <li className="Todo">
-        {this.props.text}
-      </li>
+      <View style={styles.Todo}>
+        <Text>{this.props.text}</Text>
+      </View>
     );
   }
 }

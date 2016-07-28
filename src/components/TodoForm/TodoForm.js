@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import './TodoForm.sass';
+import styles from './TodoFormStyle';
+import { TextInput } from 'react-native';
 
 export default class TodoForm extends Component {
   static propTypes = {
@@ -10,9 +11,9 @@ export default class TodoForm extends Component {
     text: ''
   }
 
-  handleChange = (event) => {
+  handleChange = (text) => {
     this.setState({
-      text: event.target.value
+      text: text
     });
   }
 
@@ -30,15 +31,16 @@ export default class TodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input
-          type="text"
-          className="TodoFormInput"
-          placeholder="Todo..."
-          value={this.state.text}
-          onChange={this.handleChange}
-        />
-      </form>
+      <TextInput
+        onSubmitEditing={this.handleSubmit}
+        type="text"
+        style={styles.TodoFormInput}
+        placeholder="Todo..."
+        value={this.state.text}
+        onChangeText={this.handleChange}
+        blurOnSubmit={false}
+        returnKeyType="send"
+      />
     );
   }
 }

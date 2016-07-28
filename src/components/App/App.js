@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import TodoForm from '../TodoForm/TodoForm';
 import TodoList from '../TodoList/TodoList';
-import './App.sass';
+import styles from './AppStyle';
 import { connect } from 'react-redux';
 import { addTodo } from '../../redux/todos';
+import { View } from 'react-native';
 
 class App extends Component {
   handleAdd = (text) => {
@@ -13,10 +14,10 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <View style={styles.App}>
         <TodoForm onAdd={this.handleAdd} />
         <TodoList todos={this.props.allTodos} />
-      </div>
+      </View>
     );
   }
 }
